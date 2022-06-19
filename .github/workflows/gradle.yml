@@ -33,4 +33,5 @@ jobs:
       with:
         arguments: build
     - name: Show Build File
-      run: echo $(pwd)
+      run: echo $(pwd) \
+        echo ${ls -l}
