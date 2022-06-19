@@ -33,4 +33,4 @@ jobs:
       with:
         arguments: build
     - name: Show Build File
-      run: echo $(ls -al build/lib)
+      run: echo $(pwd)
