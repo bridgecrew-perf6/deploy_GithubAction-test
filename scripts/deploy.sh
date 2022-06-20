@@ -14,7 +14,7 @@ if [ -z $CURRENT_PID ]
 then
   echo "> 현재 구동중인 애플리케이션이 없으므로 종료하지 않습니다." >> /home/ubuntu/action/deploy.log
 else
-  echo "> kill -15 $CURRENT_PID"
+  echo "> kill -15 $CURRENT_PID" >> /home/ubuntu/action/deploy.log
   sudo kill -15 $CURRENT_PID
   sleep 5
 fi
@@ -27,12 +27,12 @@ sudo nohup java -jar $DEPLOY_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/actio
 # shellcheck disable=SC2046
 # shellcheck disable=SC2006
 # shellcheck disable=SC2005
-echo `java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
-# shellcheck disable=SC2006
-jver=`java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
-
-if [[ $jver == "1.8" ]]; then
-     echo $jver is java 8
-else
-     echo $jver is java 11
-fi
+#echo `java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
+## shellcheck disable=SC2006
+#jver=`java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
+#
+#if [[ $jver == "1.8" ]]; then
+#     echo $jver is java 8
+#else
+#     echo $jver is java 11
+#fi
