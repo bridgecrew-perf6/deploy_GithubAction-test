@@ -19,6 +19,19 @@ else
   sleep 5
 fi
 
+# shellcheck disable=SC2046
+# shellcheck disable=SC2006
+# shellcheck disable=SC2005
+echo `java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
+# shellcheck disable=SC2006
+jver=`java -version 2>&1 | grep 'version' 2>&1 | awk -F\" '{ split($2,a,"."); print a[1]"."a[2]}'`
+
+if [[ $jver == "1.8" ]]; then
+     echo $jver is java 8
+else
+     echo $jver is java 11
+fi
+
 DEPLOY_JAR=$DEPLOY_PATH$JAR_NAME
 echo "> DEPLOY_JAR 배포"    >> /home/ubuntu/action/deploy.log
 sudo nohup java -jar $DEPLOY_JAR >> /home/ubuntu/deploy.log 2>/home/ubuntu/action/deploy_err.log &
