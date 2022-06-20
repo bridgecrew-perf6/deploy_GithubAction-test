@@ -1,0 +1,6 @@
+aws:
+  paramstore:
+    enabled: true
+    prefix: /ga-practice
+    name: parameter-store
+    profileSeparator: _
